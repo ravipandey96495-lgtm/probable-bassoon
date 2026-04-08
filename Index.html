@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ravi AI Tools</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+}
+
+header{
+font-size:30px;
+padding:20px;
+background:#1e293b;
+}
+
+.tools{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+}
+
+button{
+padding:10px;
+border:none;
+border-radius:10px;
+background:#22c55e;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+🇮🇳 Ravi AI Tools
+</header>
+
+<h2>Search Tool</h2>
+
+<input id="search" placeholder="Search AI tools">
+<button onclick="voice()">🎤</button>
+
+<div class="tools">
+
+<div class="card">
+<h3>Image to PDF</h3>
+<input type="file">
+<button>Convert</button>
+</div>
+
+<div class="card">
+<h3>PDF to Image</h3>
+<input type="file">
+<button>Convert</button>
+</div>
+
+<div class="card">
+<h3>Video Enhancer</h3>
+<input type="file">
+<button>Enhance</button>
+</div>
+
+<div class="card">
+<h3>AI Chatbot</h3>
+<input id="chat">
+<button onclick="chat()">Send</button>
+<p id="reply"></p>
+</div>
+
+</div>
+
+<footer>
+
+Created by Ravi Pandey
+
+</footer>
+
+<script>
+
+function chat(){
+
+let msg=document.getElementById("chat").value
+
+document.getElementById("reply").innerText=
+"AI: "+msg
+
+}
+
+function voice(){
+
+const recognition=new webkitSpeechRecognition()
+
+recognition.onresult=function(e){
+
+document.getElementById("search").value=
+e.results[0][0].transcript
+
+}
+
+recognition.start()
+
+}
+
+</script>
+
+</body>
+</html>
